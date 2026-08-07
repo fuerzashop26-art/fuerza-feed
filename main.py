@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/feed.xml')
 def get_clean_feed():
-    # ПОДСТАВЬТЕ СЮДА ВАШУ РЕАЛЬНУЮ ССЫЛКУ НА ОРИГИНАЛЬНЫЙ ФИД ИЗ КАБИНЕТА PROM
+    # Оригинальная ссылка на ваш фид
     url = "https://baza-bags.prom.ua/products_feed.xml?hash_tag=362a53a1f4f6537540a073604e3d9ce0&sales_notes=&product_ids=&label_ids=&exclude_fields=&html_description=1&yandex_cpa=&process_presence_sure=&languages=uk%2Cru&extra_fields=keywords&group_ids=" 
     
     try:
@@ -57,8 +57,8 @@ def get_clean_feed():
             if remove_item:
                 offers_container.remove(offer)
 
-        # Превращаем очищенное дерево обратно в XML-строку
-        final_xml = ET.tostring(root, encoding='utf-8', method='xml')
+        # Превращаем очищенное дерево обратно в XML-строку с добавлением обязательной декларации
+        final_xml = ET.tostring(root, encoding='utf-8', method='xml', xml_declaration=True)
         
         return Response(
             final_xml, 
