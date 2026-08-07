@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/feed.xml')
 def get_clean_feed():
     url = "https://baza-bags.prom.ua/products_feed.xml?hash_tag=362a53a1f4f6537540a073604e3d9ce0&sales_notes=&product_ids=&label_ids=&exclude_fields=&html_description=1&yandex_cpa=&process_presence_sure=&languages=uk%2Cru&extra_fields=keywords&group_ids=" 
-    
+ 
     try:
         res = requests.get(url, timeout=60)
         res.encoding = 'utf-8'
